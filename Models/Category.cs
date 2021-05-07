@@ -16,6 +16,8 @@ namespace WebApplication2.Models
         public string name { get; set; }
 
         [DisplayName("Display Order")]
+        [Required]
+        [Range(1,int.MaxValue,ErrorMessage ="DC should be greater than 0") ]
         public int DisplayCount { get; set; }
     }
 }
