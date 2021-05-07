@@ -1,0 +1,77 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+@model IEnumerable<ApplicationType>
+
+<div>
+
+    <div class="row pt-4">
+
+        <div class="col-6">
+
+            <h2 class="text-primary">App Type List</h2>
+
+        </div>
+
+        <div class="col-6 text-right">
+
+            <a asp-controller="ApplicationType" asp-action="Create" class="btn btn-primary">
+
+                Create a new Application Type
+
+            </a>
+
+
+
+        </div>
+
+        <br /> <br />
+
+        @if (Model.Count() > 0)
+
+        {
+
+            <table class="table table-bordered table-striped" style="width:100%">
+
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Button</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var obj in Model)
+                    {
+                        <tr>
+                            <td>
+                                @obj.Id
+                            </td>
+
+                            <td>
+                                @obj.Name
+                            </td>
+                            <td></td>
+                        </tr>
+
+                    }
+                </tbody>
+
+
+
+            </table>
+
+        }
+
+    </div>
+
+
+
+
+
+</div>
+
+

@@ -8,40 +8,42 @@ using WebApplication2.Models;
 
 namespace WebApplication2.Controllers
 {
-    public class CategoryController : Controller
+    public class ApplicationTypeController : Controller
     {
         private readonly ApplicationDbContext _db;
 
-        public CategoryController(ApplicationDbContext db)
+        public ApplicationTypeController(ApplicationDbContext db)
         {
-
             _db = db;
-
         }
         public IActionResult Index()
         {
-            IEnumerable<Category> objList = _db.Category; 
-            return View(objList);
+            IEnumerable<ApplicationType> objlist = _db.ApplicationType;
+            return View(objlist);
         }
 
-        //Get Action
+        //Get
         public IActionResult Create()
         {
+            int count = 0;
+            IEnumerable<ApplicationType> objlist = _db.ApplicationType;
+            foreach(var i in objlist)
+            {
+                count++;
+
+            }
+            ViewBag.count = count;
             return View();
         }
 
-        //Post Action
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Category obj)
+        public IActionResult Create(ApplicationType obj)
         {
-            _db.Category.Add(obj);
+            _db.ApplicationType.Add(obj);
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
-
-
-
 
     }
 }
